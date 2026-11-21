@@ -63,7 +63,7 @@
   h1 {
     margin: 0 0 6px; font-family: Georgia, "Times New Roman", serif;
     font-size: clamp(34px, 5vw, 52px); line-height: 1.06; letter-spacing: -0.01em;
-    color: var(--navy);
+    color: var(--navy); overflow-wrap: break-word;
   }
   .role { margin: 0 0 18px; font-size: 19px; color: var(--muted); }
   .lede { margin: 0; font-size: 17.5px; max-width: 58ch; }
@@ -145,7 +145,7 @@
   }
   .sample-head h3 { margin: 0; font-size: 15px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--navy); }
   .sample-head span { font-size: 12.5px; color: var(--muted); }
-  .sample-body { padding: 24px 26px; }
+  .sample-body { padding: 24px 26px; overflow-x: auto; }
   .letter {
     font-family: Georgia, "Times New Roman", serif; font-size: 15.5px; line-height: 1.65;
     max-width: 62ch;
@@ -153,7 +153,7 @@
   .letter .meta { margin: 0 0 20px; padding-bottom: 12px; border-bottom: 1px solid var(--rule); font-size: 14px; color: var(--muted); }
   .letter p { margin: 0 0 12px; }
   .letter .sig { margin-top: 20px; }
-  table.track { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  table.track { width: 100%; min-width: 480px; border-collapse: collapse; font-size: 14.5px; }
   table.track caption {
     caption-side: top; text-align: left; padding: 0 0 10px; font-size: 13.5px; color: var(--muted);
   }
@@ -162,6 +162,7 @@
   table.track tr:last-child td { border-bottom: 0; }
   .rules { margin: 18px 0 0; padding-left: 20px; font-size: 15px; }
   .rules li { margin-bottom: 6px; }
+  .hint { display: none; }
   .checklist { margin: 0; padding: 0; list-style: none; font-size: 15.5px; }
   .checklist li { position: relative; padding-left: 30px; margin-bottom: 9px; }
   .checklist li::before {
@@ -190,6 +191,7 @@
     .sample-head { padding: 12px 18px; flex-wrap: wrap; }
     table.track { font-size: 13.5px; }
     table.track th, table.track td { padding: 8px 6px; }
+    .hint { display: block; margin: 8px 0 0; font-size: 12.5px; color: var(--muted); }
   }
 
   @media print {
@@ -219,6 +221,7 @@
     .sample-body { padding: 10pt 12pt; }
     .letter { font-size: 9.5pt; }
     .letter .meta { font-size: 9pt; margin-bottom: 10pt; }
+    table.track { min-width: 0; font-size: 8.5pt; }
     footer { padding: 10pt 0 0; }
     a { color: #000; text-decoration: none; }
   }
@@ -422,7 +425,7 @@
           </div>
           <div class="sample-body">
             <table class="track">
-              <caption>One row per event. Nothing is typed over. The weekly total is checked against the register on Friday.</caption>
+              <caption>One row per event. Nothing is typed over. The weekly total is checked against the register on Friday. <span class="hint">Swipe the table sideways to see every column.</span></caption>
               <thead>
                 <tr><th>Date</th><th>Student</th><th>Arrival</th><th>Minutes late</th><th>Code</th><th>Note</th><th>Follow up</th></tr>
               </thead>
