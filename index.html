@@ -217,6 +217,13 @@
     }
   }
 
+  @media (max-width: 360px) {
+    .stats { gap: 12px; }
+    .stat { padding: 12px 12px 11px; min-width: 0; }
+    .stat b { font-size: 21px; overflow-wrap: break-word; }
+    .stat span { font-size: 12.5px; }
+  }
+
   @media print {
     @page { size: letter; margin: 0.6in 0.6in 0.62in; }
     html, body { background: #fff; }
