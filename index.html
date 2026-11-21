@@ -82,6 +82,14 @@
     margin: 16px 0 0; padding-top: 14px; border-top: 1px solid var(--rule);
     font-size: 13.5px; color: var(--muted);
   }
+  .resume-btn {
+    display: block; margin-top: 14px; padding: 10px 14px; text-align: center;
+    background: var(--navy); color: #fff; border-radius: 6px;
+    font-size: 14.5px; font-weight: 600; text-decoration: none;
+  }
+  .resume-btn:hover { background: var(--accent); color: #fff; }
+  .resume-note { margin: 8px 0 0; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+  .print-only { display: none; }
 
   section { padding: 34px 0; border-top: 1px solid var(--rule); }
   section > h2 {
@@ -210,36 +218,66 @@
   }
 
   @media print {
-    @page { size: letter; margin: 0.55in; }
-    body { background: #fff; font-size: 10pt; line-height: 1.42; color: #000; }
+    @page { size: letter; margin: 0.6in 0.6in 0.62in; }
+    html, body { background: #fff; }
+    body {
+      font-size: 9.5pt; line-height: 1.38; color: #000;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
     .wrap { width: auto; }
     .skip, .print-btn, .top { display: none; }
-    .hero { padding: 0 0 10pt; grid-template-columns: 1.6fr 0.9fr; gap: 18pt; }
-    h1 { font-size: 26pt; }
-    .role { font-size: 11.5pt; margin-bottom: 8pt; }
-    .lede { font-size: 10pt; }
-    .contact { border: 1pt solid #999; border-top: 2pt solid #17324d; padding: 10pt 12pt; }
-    .contact dd { font-size: 9.5pt; }
-    section { padding: 12pt 0; border-top: 1pt solid #bbb; break-inside: avoid; }
-    section > h2 { font-size: 15pt; }
-    .section-note { font-size: 9.5pt; margin-bottom: 8pt; }
-    .stat { border: 0; border-left: 2pt solid #17324d; padding: 2pt 0 2pt 8pt; }
-    .stat b { font-size: 14pt; }
-    .stat span { font-size: 8.5pt; }
-    .card { border: 0; border-left: 2pt solid #17324d; padding: 2pt 0 2pt 9pt; }
-    .card h3, .job-head h3, .edu h3 { font-size: 10.5pt; }
-    .card p, .job li, .route p, .rules li, .checklist li, .availability p { font-size: 9.5pt; }
-    .route-box { border: 0; border-left: 2pt solid #8a5a2b; padding: 2pt 0 2pt 9pt; }
-    .job { break-inside: avoid; padding: 8pt 0; }
-    .sample { break-inside: avoid; border: 1pt solid #bbb; }
-    .sample-head { background: #f2f2f2; padding: 5pt 9pt; }
-    .sample-body { padding: 10pt 12pt; }
-    .letter { font-size: 9.5pt; }
-    .letter .meta { font-size: 9pt; margin-bottom: 10pt; }
-    table.track { font-size: 8.5pt; }
-    footer { padding: 10pt 0 0; }
+    .print-only { display: block; }
     a { color: #000; text-decoration: none; }
-  }
+
+    h2, h3, caption { break-after: avoid; page-break-after: avoid; }
+    p, li { orphans: 2; widows: 2; }
+    .cards, .stats, .two-col, .availability, .route { break-inside: auto; }
+
+    .hero { padding: 0 0 10pt; grid-template-columns: 1.6fr 0.95fr; gap: 15pt; break-inside: avoid; }
+    h1 { font-size: 24pt; }
+    .role { font-size: 11pt; margin-bottom: 6pt; }
+    .lede { font-size: 9.5pt; }
+    .contact { border: 1pt solid #999; border-top: 2pt solid #17324d; padding: 8pt 10pt; break-inside: avoid; }
+    .contact dd { font-size: 9pt; }
+    .resume-btn, .resume-note { display: none; }
+
+    section { padding: 9pt 0; break-inside: auto; page-break-inside: auto; }
+    #samples { break-before: page; page-break-before: always; }
+    section > h2 { font-size: 14pt; }
+    .section-note { font-size: 9pt; margin-bottom: 6pt; }
+
+    .stats { gap: 7pt 12pt; break-inside: avoid; }
+    .stat { border: 0; border-left: 2pt solid #17324d; padding: 2pt 0 2pt 7pt; break-inside: avoid; }
+    .stat b { font-size: 13pt; }
+    .stat span { font-size: 8pt; margin-top: 3pt; }
+
+    .cards { gap: 8pt 14pt; }
+    .card { border: 0; border-left: 2pt solid #17324d; padding: 2pt 0 2pt 8pt; break-inside: avoid; }
+    .card h3, .job-head h3, .edu h3 { font-size: 10pt; }
+    .card p, .job li, .route p, .rules li, .checklist li, .availability p { font-size: 9pt; }
+    .route-box { border: 0; border-left: 2pt solid #8a5a2b; padding: 2pt 0 2pt 8pt; break-inside: avoid; }
+    .route-box li { font-size: 9pt; margin-bottom: 5pt; }
+    .route p { margin-bottom: 9pt; }
+
+    .job { break-inside: avoid; page-break-inside: avoid; padding: 6pt 0; }
+    .edu { break-inside: avoid; padding: 6pt 0; }
+    .availability { gap: 8pt 26pt; }
+    .availability > div { break-inside: avoid; }
+
+    .samples { gap: 10pt; }
+    .sample { break-inside: avoid; page-break-inside: avoid; border: 1pt solid #bbb; }
+    .sample-head { background: #f2f2f2; padding: 4pt 9pt; break-inside: avoid; }
+    .sample-body { padding: 8pt 10pt; }
+    .letter { font-size: 9pt; }
+    .letter p { break-inside: avoid; }
+    .letter .meta { font-size: 8.5pt; margin-bottom: 8pt; }
+    table.track { font-size: 8.2pt; }
+    table.track tr { break-inside: avoid; page-break-inside: avoid; }
+    .rules { break-inside: avoid; }
+    .checklist li { break-inside: avoid; }
+
+    footer { padding: 8pt 0 0; break-inside: avoid; }
+    .fine { font-size: 8.5pt; }
 </style>
 </head>
 <body>
@@ -269,6 +307,8 @@
           <div><dt>Location</dt><dd>New York, NY</dd></div>
         </dl>
         <p class="note">Available for per diem substitute secretary work now, and for DOE fingerprinting and onboarding.</p>
+        <a class="resume-btn" href="Melchezidek-Searles-School-Office-Resume.pdf" download>Download the one page resume (PDF)</a>
+        <p class="resume-note">A single page, ready to print or forward on its own. The rest of this page prints as a longer portfolio.</p>
       </aside>
     </section>
 
@@ -285,7 +325,7 @@
 
     <section aria-labelledby="bring">
       <h2 id="bring">What I bring to a school office</h2>
-      <p class="section-note">The job is the same every day and different every hour. These are the four things I am actually good at.</p>
+      <p class="section-note">Four parts of the job decide whether an office day goes well. Each one below is matched to work already done.</p>
       <div class="cards">
         <article class="card">
           <h3>A front desk that stays calm</h3>
@@ -511,6 +551,7 @@
       <div><a href="mailto:melsearles99@gmail.com">melsearles99@gmail.com</a> &nbsp; <a href="tel:+19293692727">(929) 369-2727</a></div>
     </div>
     <p class="fine">Updated November 2026. The samples on this page are illustrative and contain no student or family information.</p>
+    <p class="fine print-only">Portfolio and one page resume: cordiallymel.github.io/school-office-portfolio</p>
   </div>
 </footer>
 
